@@ -8,7 +8,28 @@ function as a helper function.
 */
 
 // Your code here 
+function removeLastVowel(word) {
+  const vowels = "aeiouAEIOU";
+  let wordArray = word.split('');
 
+  for (let i = wordArray.length - 1; i >= 0; i--) {
+      if (vowels.includes(wordArray[i])) {
+          wordArray.splice(i, 1);
+          return wordArray.join('');
+      }
+  }
+  return word;
+}
+
+function hipsterfy(sentence) {
+  let words = sentence.split(' ');
+
+  for (let i = 0; i < words.length; i++) {
+      words[i] = removeLastVowel(words[i]);
+  }
+
+  return words.join(' ');
+}
 // console.log(hipsterfy("When should everyone wake up?")); // 'Whn shold everyon wak p?'
 // console.log(hipsterfy("get ready for our bootcamp")); // 'gt redy fr or bootcmp'
 // console.log(hipsterfy("panthers are great animals")); // 'panthrs ar gret animls'

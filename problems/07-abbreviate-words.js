@@ -9,7 +9,33 @@ to remove the vowels of the words.
 */
 
 // Your code here 
+function removeVowels(word) {
+  const vowels = "aeiouAEIOU";
+  let result = "";
 
+  for (let i = 0; i < word.length; i++) {
+      if (!vowels.includes(word[i])) {
+          result += word[i];
+      }
+  }
+
+  return result;
+}
+
+function abbreviateWords(sentence) {
+  let words = sentence.split(' ');
+  let abbreviatedSentence = [];
+
+  for (let i = 0; i < words.length; i++) {
+      if (words[i].length > 4) {
+          abbreviatedSentence.push(removeVowels(words[i]));
+      } else {
+          abbreviatedSentence.push(words[i]);
+      }
+  }
+
+  return abbreviatedSentence.join(' ');
+}
 // console.log(removeVowels("hello")); // hll
 // console.log(removeVowels("what"));  // wht
 // console.log(removeVowels("stop"));  // stp

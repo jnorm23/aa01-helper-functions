@@ -8,7 +8,32 @@ divide the given number evenly. Use the isPrime function as a helper function.
 */
 
 // Your code here 
+function isPrime(num) {
+  if (num <= 1) return false; 
+  if (num === 2) return true; 
 
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false; 
+  }
+
+  return true; 
+}
+
+function primeFactors(num) {
+  const factors = [];
+  
+  for (let i = 2; i <= num; i++) {
+    if (isPrime(i) && num % i === 0) {
+      factors.push(i);
+      
+      while (num % i === 0) {
+        num /= i;
+      }
+    }
+  }
+  
+  return factors;
+}
 // console.log(primeFactors(12)); // [2, 3]
 // console.log(primeFactors(7)); // [7]
 // console.log(primeFactors(16)); // [2]

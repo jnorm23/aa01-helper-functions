@@ -8,7 +8,25 @@ number.
 */
 
 // Your code here 
+function isPrime(num) {
+  if (num <= 1) return false; 
+  if (num === 2) return true; 
 
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false; 
+  }
+
+  return true; 
+}
+
+function nextPrime(num) {
+  let next = num + 1; 
+
+  while (true) {
+    if (isPrime(next)) return next; 
+    next++; 
+  }
+}
 // console.log(nextPrime(2)); // 3
 // console.log(nextPrime(3)); // 5
 // console.log(nextPrime(7)); // 11

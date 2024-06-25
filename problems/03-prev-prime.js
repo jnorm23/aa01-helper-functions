@@ -9,7 +9,28 @@ returned. Use the isPrime function as a helper function.
 */
 
 // Your code here 
+function isPrime(num) {
+  if (num <= 1) return false; 
+  if (num === 2) return true; 
 
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false; 
+  }
+
+  return true; 
+}
+
+function prevPrime(num) {
+  if (num <= 2) return null; 
+  let previous = num - 1;
+
+  while (previous >= 2) {
+    if (isPrime(previous)) return previous; 
+    previous--; 
+  }
+
+  return null; 
+}
 // console.log(prevPrime(32)); // 31
 // console.log(prevPrime(33)); // 31
 // console.log(prevPrime(14)); // 13

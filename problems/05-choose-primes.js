@@ -8,7 +8,28 @@ from the original array. Use the isPrime function as a helper function.
 */
 
 // Your code here 
+function isPrime(num) {
+  if (num <= 1) return false; 
+  if (num === 2) return true; 
 
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false; 
+  }
+
+  return true; 
+}
+
+function choosePrimes(numbers) {
+  const primes = [];
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (isPrime(numbers[i])) {
+      primes.push(numbers[i]);
+    }
+  }
+
+  return primes; 
+}
 // console.log(choosePrimes([36, 48, 9, 13, 19]));   // [ 13, 19 ]
 // console.log(choosePrimes([5, 6, 4, 11, 2017]));   // [ 5, 11, 2017 ]
 // console.log(choosePrimes([1, 2, 3, 5, 7, 9]));    // [ 2, 3, 5, 7 ]

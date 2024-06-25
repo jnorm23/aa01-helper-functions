@@ -10,19 +10,15 @@ and 2 (10 / 5 = 2 and 10 / 1 = 10).
 */
 
 // Your code here 
-function isDivisible(num, divisor) {
-    return num % divisor === 0;
-  }
-  
-  function isPrime(num) {
+function isPrime(num) {
     if (num <= 1) return false; 
     if (num === 2) return true; 
-    
+  
     for (let i = 2; i <= Math.sqrt(num); i++) {
-      if (isDivisible(num, i)) return false;
+      if (num % i === 0) return false; 
     }
-    
-    return true;
+  
+    return true; 
   }
 // console.log(isPrime(2)); // => true
 // console.log(isPrime(10)); // => false

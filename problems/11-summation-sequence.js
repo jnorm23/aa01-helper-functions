@@ -16,6 +16,25 @@ Use the findSummation function as a helper function.
 */
 
 // Your code here 
+function findSummation(number) {
+  let summation = 0;
+  for (let i = 1; i <= number; i++) {
+      summation += i;
+  }
+  return summation;
+}
+
+function summationSequence(start, length) {
+  let sequence = [];
+  let current = start;
+
+  for (let i = 0; i < length; i++) {
+      sequence.push(current);
+      current = findSummation(current); 
+  }
+
+  return sequence;
+}
 
 // console.log(summationSequence(3, 4)); // [3, 6, 21, 231]
 // console.log(summationSequence(5, 3)); // [5, 15, 120]

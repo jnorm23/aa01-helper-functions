@@ -10,7 +10,35 @@ function.
 */
 
 // Your code here 
+function isVowel(char) {
+  char = char.toLowerCase();
+  
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
 
+  for (let vowel of vowels) {
+      if (char === vowel) {
+          return true;
+      }
+  }
+
+  return false;
+}
+
+function hasThreeVowels(string) {
+  let vowelCount = 0;
+
+  for (let i = 0; i < string.length; i++) {
+      if (isVowel(string[i])) {
+          vowelCount++;
+      }
+      
+      if (vowelCount >= 3) {
+          return true;
+      }
+  }
+
+  return false;
+}
 // console.log(hasThreeVowels("delicious"));     //  true
 // console.log(hasThreeVowels("bootcamp prep")); //  true
 // console.log(hasThreeVowels("bootcamp"));      //  true

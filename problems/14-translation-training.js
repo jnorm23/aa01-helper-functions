@@ -20,8 +20,36 @@ translationTraining function.
 let VOWELS = "aeiou";
 
 function removeVowel(word, isFirst) {
-  // Your code here 
-}
+  let vowels = "aeiou";
+  let result = "";
+
+  if (isFirst) {
+      let foundFirstVowel = false;
+      for (let char of word) {
+          if (!foundFirstVowel && vowels.includes(char.toLowerCase())) {
+              foundFirstVowel = true;
+              continue; 
+          }
+          result += char;
+      }
+  } else {
+      let foundLastVowelIndex = -1;
+      for (let i = word.length - 1; i >= 0; i--) {
+          if (vowels.includes(word[i].toLowerCase())) {
+              foundLastVowelIndex = i;
+              break; 
+          }
+      }
+      for (let i = 0; i < word.length; i++) {
+          if (i !== foundLastVowelIndex) {
+              result += word[i];
+          }
+      }
+  }
+
+  return result;
+};
+
 
 // console.log(removeVowel("What", true)); // Wht
 // console.log(removeVowel("tedious", true)); // tdious
@@ -30,13 +58,28 @@ function removeVowel(word, isFirst) {
 // console.log(removeVowel("doing", true)); // ding
 
 function translationTraining(sentence) {
-  // Your code here 
+  let words = sentence.split(" ");
+  let translatedSentence = "";
+
+  for (let i = 0; i < words.length; i++) {
+      if (i % 2 === 0) {
+          translatedSentence += removeVowel(words[i], true);
+      } else {
+          translatedSentence += removeVowel(words[i], false);
+      }
+
+      if (i !== words.length - 1) {
+          translatedSentence += " ";
+      }
+  }
+
+  return translatedSentence;
 };
 
-// console.log(translationTraining("What are you doing")); // "Wht ar yu dong"
-// console.log(translationTraining("This is tedious")); // "Ths s tdious"
-// console.log(translationTraining("Programming is fun")); // "Prgramming s fn"
-// console.log(translationTraining("My food is getting cold")); // "My fod s gettng cld"
+console.log(translationTraining("What are you doing")); // "Wht ar yu dong"
+console.log(translationTraining("This is tedious")); // "Ths s tdious"
+console.log(translationTraining("Programming is fun")); // "Prgramming s fn"
+console.log(translationTraining("My food is getting cold")); // "My fod s gettng cld"
 
 /******************** DO NOT MODIFY ANY CODE BELOW THIS LINE *****************/
 module.exports = {

@@ -17,7 +17,7 @@ describeNumberSequence.
 */
 
 function describeCount(digit, count) {
-  // Your code here 
+  return count.toString() + digit;
 }
 
 // console.log(describeCount("1", 1)); // "11"
@@ -26,7 +26,23 @@ function describeCount(digit, count) {
 // console.log(describeCount("7", 5)); // "57"
 
 function describeNumberSequence(str) {
-  // Your code here 
+  let result = "";
+  let currentDigit = str[0];
+  let count = 1;
+
+  for (let i = 1; i < str.length; i++) {
+      if (str[i] === currentDigit) {
+          count++;
+      } else {
+          result += describeCount(currentDigit, count);
+          currentDigit = str[i];
+          count = 1;
+      }
+  }
+
+  result += describeCount(currentDigit, count);
+
+  return result;
 }
 
 // console.log(describeNumberSequence("233")); //1223

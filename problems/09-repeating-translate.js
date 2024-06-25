@@ -19,6 +19,46 @@ according to the rules defined for words 3 characters or longer above.
 */
 
 // Your code here 
+function translateWord(word) {
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  
+  if (word.length < 3) {
+      return word;
+  }
+  
+  if (vowels.includes(word[word.length - 1].toLowerCase())) {
+      return word + word; 
+  } else {
+      let lastVowel = -1;
+      for (let i = word.length - 1; i >= 0; i--) {
+          if (vowels.includes(word[i].toLowerCase())) {
+              lastVowel = i - 1;
+              break;
+          }
+      }
+      
+      return word + word.slice(lastVowel + 1);
+  }
+}
+
+function repeatingTranslate(sentence) {
+  const words = sentence.split(' ');
+  let translatedSentence = '';
+  
+  words.forEach((word, index) => {
+      if (index > 0) {
+          translatedSentence += ' '; 
+      }
+      
+      if (word[0] === word[0].toUpperCase()) {
+          translatedSentence += translateWord(word).charAt(0).toUpperCase() + translateWord(word).slice(1);
+      } else {
+          translatedSentence += translateWord(word);
+      }
+  });
+  
+  return translatedSentence;
+}
 
 // console.log(repeatingTranslate("we like to go running fast")); // "we likelike to go runninging fastast"
 // console.log(repeatingTranslate("he cannot find the trash")); // "he cannotot findind thethe trashash"

@@ -14,7 +14,7 @@ factor. Use the greatestFactor function as a helper function.
 // Your code here 
 
 function greatestFactor(num) {
-  let greatest = 1; 
+  let greatest = 2; 
   
   for (let i = 2; i <= num / 2; i++) {
       if (num % i === 0) { 
